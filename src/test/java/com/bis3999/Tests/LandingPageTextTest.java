@@ -20,7 +20,7 @@ public class LandingPageTextTest extends TestBase {
     @Test
     public void verifyHelloWorldTest() throws InvalidElementStateException {
         landingPage page = landingPage.visitPage(driver);
-		
-        assertFalse(page.hasHelloWorld());
+		//System.out.println(page.hasHelloWorld());
+        assertFalse("Hello World not found!",page.hasHelloWorld());
     }
 }
