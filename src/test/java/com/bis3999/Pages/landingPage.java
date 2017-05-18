@@ -20,6 +20,9 @@ public class landingPage {
 
     @FindBy(id = "submit")
     private WebElement submitButton;
+	
+	@FindBy(tagName = "h2")
+	private WebElement helloWorld;
 
     public WebDriver driver;
     public static String url = "http://ec2-52-77-255-171.ap-southeast-1.compute.amazonaws.com:8080/bis3999";
@@ -51,6 +54,10 @@ public class landingPage {
         WebDriverWait wait = new WebDriverWait(this.driver, 15);
         wait.until(ExpectedConditions.textToBePresentInElement(yourCommentsSpan, text));
     }
+	
+	public boolean hasHelloWorld() {
+		return helloWorld.getText() == "Hello World!";
+	}
 
     public String getSubmittedCommentText() {
         return this.yourCommentsSpan.getText();

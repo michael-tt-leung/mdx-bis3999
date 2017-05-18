@@ -6,9 +6,9 @@ import org.openqa.selenium.InvalidElementStateException;
 
 import static org.junit.Assert.*;
 
-public class FollowLinkTest extends TestBase {
+public class LandingPageTextTest extends TestBase {
 
-    public FollowLinkTest(String os,
+    public LandingPageTextTest(String os,
                           String version, String browser, String deviceName, String deviceOrientation) {
             super(os, version, browser, deviceName, deviceOrientation);
     }
@@ -18,11 +18,9 @@ public class FollowLinkTest extends TestBase {
      * @throws InvalidElementStateException
      */
     @Test
-    public void verifyLinkTest() throws InvalidElementStateException {
+    public void verifyHelloWorldTest() throws InvalidElementStateException {
         landingPage page = landingPage.visitPage(driver);
-
-        page.followLink();
-
-        assertFalse(page.isOnPage());
+		
+        assertFalse(page.hasHelloWorld());
     }
 }
