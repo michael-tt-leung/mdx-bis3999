@@ -39,6 +39,18 @@
             <scope>test</scope>
         </dependency>
 	</dependencies>
+    <repositories>
+        <repository>
+            <id>saucelabs-repository</id>
+            <url>http://repository-saucelabs.forge.cloudbees.com/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
   <build>
     <finalName>bis3999</finalName>
 	<plugins>

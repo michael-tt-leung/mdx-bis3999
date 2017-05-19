@@ -16,7 +16,7 @@ public class LandingPageTextTest extends TestBase {
      * Runs a simple test verifying link can be followed.
      * @throws InvalidElementStateException
      */
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "sauceBrowserDataProvider")
     public void verifyHelloWorldTest(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
@@ -26,6 +26,6 @@ public class LandingPageTextTest extends TestBase {
 
 		landingPage page = landingPage.visitPage(driver);
 		//System.out.println(page.hasHelloWorld());
-        Assert.assertFalse("Hello World not found!",page.hasHelloWorld());
+        Assert.assertFalse(page.hasHelloWorld());
     }
 }

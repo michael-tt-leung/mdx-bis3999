@@ -19,6 +19,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.UnexpectedException;
 
+import com.saucelabs.common.Utils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 // import testng annotations
 // import java libraries
 
@@ -60,7 +70,7 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
      * @param testMethod
      * @return Two dimensional array of objects with browser, version, and platform information
      */
-    @DataProvider(name = "hardCodedBrowsers", parallel = true)
+/*    @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
                 new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
@@ -69,6 +79,44 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
         };
+    } */
+	
+    public static final String SAUCE_ONDEMAND_BROWSERS = "SAUCE_ONDEMAND_BROWSERS";
+
+    /**
+     * Constructs a List of Object array instances which represent a series of browser combinations.
+     * The method retrieves and parses the value of the SAUCE_ONDEMAND_BROWSERS environment variable/system
+     * property which is assumed to be in JSON format.
+     *
+     * @param testMethod Test method consuming the data
+     * @return ArrayList of data provider (List of strings)
+     */
+    @DataProvider(name = "sauceBrowserDataProvider")
+    public static Iterator<Object[]> sauceBrowserDataProvider(Method testMethod) {
+
+        List<Object[]> data = new ArrayList<Object[]>();
+
+        //read browsers from JSON-formatted environment variable if specified
+        String json = Utils.readPropertyOrEnv(SAUCE_ONDEMAND_BROWSERS, "");
+
+        if (json == null || json.equals("")) {
+            throw new IllegalArgumentException("Unable to find JSON");
+        }
+
+        try {
+            JSONArray browsers = (JSONArray) new JSONParser().parse(json);
+            for (Object object : browsers) {
+                JSONObject jsonObject = (JSONObject) object;
+                data.add(new Object[]{
+                        jsonObject.get("browser"),
+                        jsonObject.get("version"),
+                        jsonObject.get("os")});
+            }
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Error parsing JSON String", e);
+        }
+
+        return data.iterator();
     }
 
     /**
