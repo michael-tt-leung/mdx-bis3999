@@ -58,7 +58,7 @@ public class landingPage {
 	public boolean hasHelloWorld() {
 		//System.out.println(this.helloWorld.getText());
 		//System.out.println(this.helloWorld.getText() == "Hell World!!!!!");		
-		String testString = "Hello World!!";
+		String testString = "Hello World!";
 		return this.helloWorld.getText() == testString;
 	}
 
