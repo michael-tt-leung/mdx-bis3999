@@ -104,6 +104,7 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
         }
 
         try {
+			System.out.println(json);
             JSONArray browsers = (JSONArray) new JSONParser().parse(json);
             for (Object object : browsers) {
                 JSONObject jsonObject = (JSONObject) object;
