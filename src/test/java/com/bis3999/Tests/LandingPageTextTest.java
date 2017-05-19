@@ -1,26 +1,31 @@
 package com.bis3999.Tests;
 
-import com.bis3999.Pages.*;
-import org.junit.Test;
+import com.bis3999.Pages.landingPage;
 import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.rmi.UnexpectedException;
 
 public class LandingPageTextTest extends TestBase {
-
-    public LandingPageTextTest(String os,
-                          String version, String browser, String deviceName, String deviceOrientation) {
-            super(os, version, browser, deviceName, deviceOrientation);
-    }
 
     /**
      * Runs a simple test verifying link can be followed.
      * @throws InvalidElementStateException
      */
-    @Test
-    public void verifyHelloWorldTest() throws InvalidElementStateException {
-        landingPage page = landingPage.visitPage(driver);
+    @Test(dataProvider = "hardCodedBrowsers")
+    public void verifyHelloWorldTest(String browser, String version, String os, Method method)
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
+
+        //create webdriver session
+        this.createDriver(browser, version, os, method.getName());
+        WebDriver driver = this.getWebDriver();
+
+		landingPage page = landingPage.visitPage(driver);
 		//System.out.println(page.hasHelloWorld());
-        assertFalse("Hello World not found!",page.hasHelloWorld());
+        Assert.assertFalse("Hello World not found!",page.hasHelloWorld());
     }
 }
