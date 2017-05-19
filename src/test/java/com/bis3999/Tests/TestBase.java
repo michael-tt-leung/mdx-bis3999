@@ -110,7 +110,7 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
                 JSONObject jsonObject = (JSONObject) object;
                 data.add(new Object[]{
                         jsonObject.get("browser"),
-                        jsonObject.get("browserVersion"),
+                        jsonObject.get("browser-version"),
                         jsonObject.get("os")});
             }
         } catch (ParseException e) {
