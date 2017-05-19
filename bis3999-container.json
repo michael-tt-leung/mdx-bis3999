@@ -1,0 +1,19 @@
+{
+    "family": "bis3999-app-static",
+    "containerDefinitions": [
+        {
+            "image": "979157043090.dkr.ecr.ap-southeast-1.amazonaws.com/bis3999-ecr:v_%BUILD_NUMBER%",
+            "name": "bis3999-container",
+            "cpu": 10,
+            "memory": 256,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+					"protocol": "tcp"
+                }
+            ]
+        }
+    ]
+}
