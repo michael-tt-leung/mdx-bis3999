@@ -25,8 +25,9 @@ public class landingPage {
 	private WebElement helloWorld;
 
     public WebDriver driver;
-    public static String url = "http://ec2-52-77-255-171.ap-southeast-1.compute.amazonaws.com:8080/bis3999";
-
+//    public static String url = "http://ec2-52-77-255-171.ap-southeast-1.compute.amazonaws.com:8080/bis3999";
+    public static String url = "http://ec2-54-179-170-137.ap-southeast-1.compute.amazonaws.com:8080/bis3999";
+	
     public static landingPage visitPage(WebDriver driver) {
         landingPage page = new landingPage(driver);
         page.visitPage();
