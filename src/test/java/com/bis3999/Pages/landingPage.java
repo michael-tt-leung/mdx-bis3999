@@ -63,7 +63,7 @@ public class landingPage {
 		return this.helloWorld.getText() == testString;
 	}
 	
-	public string getH2() {
+	public String getH2() {
 		return this.helloWorld.getText();
 	}
 
