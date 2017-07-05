@@ -25,7 +25,7 @@ public class LandingPageTextTest extends TestBase {
         WebDriver driver = this.getWebDriver();
 
 		landingPage page = landingPage.visitPage(driver);
-		//System.out.println(page.hasHelloWorld());
+		System.out.println(page.hasHelloWorld());
         Assert.assertTrue(page.hasHelloWorld());
     }
 }
