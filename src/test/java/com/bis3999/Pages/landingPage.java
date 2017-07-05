@@ -62,6 +62,10 @@ public class landingPage {
 		String testString = "Hello World!";
 		return this.helloWorld.getText() == testString;
 	}
+	
+	public string getH2() {
+		return this.helloWorld.getText();
+	}
 
     public String getSubmittedCommentText() {
         return this.yourCommentsSpan.getText();
