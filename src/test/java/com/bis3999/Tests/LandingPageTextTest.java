@@ -29,5 +29,13 @@ public class LandingPageTextTest extends TestBase {
 		//System.out.println(page.hasHelloWorld());
         //Assert.assertTrue(page.hasHelloWorld());
 		Assert.assertEquals(page.getH2(), "Hello World!", "The page heading is not showing 'Hello World!'");
+		printSessionId();
     }
+	
+	private void printSessionId() {
+ 
+    String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+	(((RemoteWebDriver) driver).getSessionId()).toString(), "LandingPageTextTest");
+    System.out.println(message);
+	} 
 }
