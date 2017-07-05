@@ -3,6 +3,7 @@ package com.bis3999.Tests;
 import com.bis3999.Pages.landingPage;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -31,7 +32,7 @@ public class LandingPageTextTest extends TestBase {
 		Assert.assertEquals(page.getH2(), "Hello World!", "The page heading is not showing 'Hello World!'");
 		
 		String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
-		(driver.getSessionId()).toString(), "LandingPageTextTest");
+		(((RemoteWebDriver) driver).getSessionId()).toString(), "LandingPageTextTest");
 		System.out.println(message);
     }
 }
