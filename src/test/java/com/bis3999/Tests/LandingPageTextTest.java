@@ -26,7 +26,8 @@ public class LandingPageTextTest extends TestBase {
 
 		landingPage page = landingPage.visitPage(driver);
 		System.out.println(page.getH2());
-		System.out.println(page.hasHelloWorld());
-        Assert.assertTrue(page.hasHelloWorld());
+		//System.out.println(page.hasHelloWorld());
+        //Assert.assertTrue(page.hasHelloWorld());
+		Assert.assertEquals(page.getH2(), "Hello World!", "The page heading is not showing 'Hello World!'");
     }
 }
